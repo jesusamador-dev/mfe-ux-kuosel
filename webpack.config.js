@@ -2,11 +2,44 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { GenerateSW } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const dotenv = require('dotenv');
 
 // Cargar variables de entorno
 dotenv.config({ path: './.env.devlocal' });
+const isProduction = process.env.NODE_ENV === 'production';
+
+const plugins = [
+  new CleanWebpackPlugin(),
+  new ModuleFederationPlugin({
+    name: 'host',
+    remotes: {
+      remote: `remote@${process.env.REMOTE_URL}/remoteEntry.js`,
+    },
+    shared: {
+      react: {
+        singleton: true,
+        requiredVersion: require('./package.json').dependencies.react,
+      },
+      'react-dom': {
+        singleton: true,
+        requiredVersion: require('./package.json').dependencies['react-dom'],
+      },
+    },
+  }),
+  new HtmlWebpackPlugin({
+    template: './public/index.html',
+  }),
+];
+
+if (isProduction) {
+  plugins.push(
+    new InjectManifest({
+      swSrc: './src/service-worker.js', // Ruta al archivo fuente del service worker
+      swDest: 'service-worker.js', // Nombre del archivo destino del service worker
+    })
+  );
+}
 
 module.exports = {
   entry: './src/index.tsx',
@@ -47,64 +80,18 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src/'), // Agrega este alias
+    },
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new ModuleFederationPlugin({
-      name: 'host',
-      remotes: {
-        remote: `remote@${process.env.REMOTE_URL}/remoteEntry.js`,
-      },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: require('./package.json').dependencies.react,
-        },
-        'react-dom': {
-          singleton: true,
-          requiredVersion: require('./package.json').dependencies['react-dom'],
-        },
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-    new GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
-      runtimeCaching: [
-        {
-          urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'images',
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 30 * 24 * 60 * 60, // 30 días
-            },
-          },
-        },
-        {
-          urlPattern: new RegExp('https://your.api.endpoint/'),
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'api',
-            networkTimeoutSeconds: 10,
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 5 * 60, // 5 minutos
-            },
-          },
-        },
-      ],
-    }),
-  ],
+  plugins: plugins,
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     port: process.env.PORT,
     historyApiFallback: true,
   },
-  mode: 'development',
+  mode: isProduction ? 'production' : 'development',
 };
