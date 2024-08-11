@@ -84,3 +84,5 @@ logs
 # Ignore testing and coverage results
 coverage/
 jest/
+
+*storybook.log
