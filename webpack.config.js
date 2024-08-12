@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const deps = require('./package.json').dependencies;
 const dotenv = require('dotenv');
 
 // Cargar variables de entorno
@@ -13,17 +14,20 @@ const plugins = [
   new CleanWebpackPlugin(),
   new ModuleFederationPlugin({
     name: 'host',
+    filename: 'remoteEntry.js',
     remotes: {
-      remote: `remote@${process.env.REMOTE_URL}/remoteEntry.js`,
     },
     shared: {
+      ...deps,
       react: {
         singleton: true,
-        requiredVersion: require('./package.json').dependencies.react,
+        requiredVersion: deps['react'],
+        eager: true
       },
       'react-dom': {
         singleton: true,
-        requiredVersion: require('./package.json').dependencies['react-dom'],
+        requiredVersion: deps['react-dom'],
+        eager: true
       },
     },
   }),
@@ -45,11 +49,15 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
+    filename: 'remoteEntry.js',
+    publicPath: '/kuosel/ux/v1/',
   },
   module: {
     rules: [
+      {
+        test: /\.svg$/,
+        use: 'raw-loader',  // Asegúrate de agregar esta regla
+      },
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,

@@ -1,6 +1,7 @@
 import { precacheAndRoute } from 'workbox-precaching';
 
 // Inyecta el manifiesto de Workbox
+console.log(self.__WB_MANIFEST)
 precacheAndRoute(self.__WB_MANIFEST);
 
 const isLocalhost = Boolean(
