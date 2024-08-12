@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import './base/_base';
+
 @import './components/_buttons';
 @import './components/_bottomNavbar';
 @import './components/_topBar';

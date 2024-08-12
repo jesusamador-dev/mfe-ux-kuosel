@@ -14,15 +14,6 @@ Default.args = {
   title: 'Acc Balance',
 };
 
-// Default.parameters = {
-//   backgrounds: {
-//     default: 'principal',
-//     values: [
-//       {name: 'principal', value:'#F7F8F9'}
-//     ]
-//   }
-// }
-
 Default.parameters = {
   backgrounds: {
     default: "principal",
