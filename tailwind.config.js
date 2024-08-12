@@ -12,7 +12,7 @@ module.exports = {
         secondary: '#816CF9', // Secoundry color
         secondaryLight: '#AAAAAA', // Secondary color (más claro)
         font: '#000000', // Font color
-        bg: '#F7F8F9', // BG color
+        grayPrincipal: '#F7F8F9', // BG color
         whiteBg: '#FFFFFF', // White BG
         grayEEE: '#EEEEEE', // EEE
         grayCCC: '#CCCCCC', // CCC

@@ -1,0 +1,32 @@
+/* src/components/KSLBottomNavbar/KSLBottomNavbar.scss */
+
+.ksl-bottom-navbar {
+    @apply flex justify-around py-4 shadow-md fixed bottom-0 w-full bg-grayPrincipal;
+    
+    .link {
+      @apply flex flex-col items-center text-gray-500;
+      
+      &--active {
+        @apply text-primary;
+      }
+      
+      &__special {
+        @apply bg-primary p-3 rounded-full w-[40px] h-[40px] text-white;
+      }
+      
+      &__icon {
+        &--active {
+          @apply text-primary;
+        }
+        
+        &--inactive {
+          @apply text-grayAAA;
+        }
+      }
+  
+      &__name {
+        @apply mt-1 text-sm text-grayAAA;
+      }
+    }
+  }
+  
