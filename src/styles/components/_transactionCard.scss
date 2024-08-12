@@ -1,0 +1,40 @@
+.ksl-transaction-card {
+    @apply flex items-center justify-between p-4 bg-white rounded-lg;
+  
+    &__icon {
+      @apply bg-grayPrincipal p-3 rounded-lg;
+    }
+  
+    &__details {
+      @apply flex-1 ml-4;
+    }
+  
+    &__title {
+      @apply text-lg font-semibold;
+    }
+  
+    &__date {
+      @apply text-grayAAA text-base font-semibold; /* Cambiado a text-base */
+    }
+  
+    &__amount {
+      @apply text-right;
+  
+      &-value {
+        @apply text-lg font-semibold;
+      }
+  
+      &-change {
+        @apply flex text-base items-center; /* Cambiado a text-base */
+        
+        &--positive {
+          @apply text-green-500;
+        }
+  
+        &--negative {
+          @apply text-red-500;
+        }
+      }
+    }
+  }
+  

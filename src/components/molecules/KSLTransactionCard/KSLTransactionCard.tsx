@@ -19,17 +19,17 @@ const KSLTransactionCard: React.FC<KSLTransactionCardProps> = ({
   isPositiveChange = true,
 }) => {
   return (
-    <div className="ksl-transaction-card flex items-center justify-between p-4 bg-white rounded-lg">
-      <div className="ksl-transaction-card__icon bg-grayPrincipal p-3 rounded-lg">
+    <div className="ksl-transaction-card">
+      <div className="ksl-transaction-card__icon">
         <KSLIcon name={categoryIcon} size="2rem" />
       </div>
-      <div className="ksl-transaction-card__details flex-1 ml-4">
-        <h2 className="ksl-transaction-card__title text-lg font-semibold">{title}</h2>
-        <p className="ksl-transaction-card__date text-grayAAA text-md font-semibold">{date}</p>
+      <div className="ksl-transaction-card__details">
+        <h2 className="ksl-transaction-card__title">{title}</h2>
+        <p className="ksl-transaction-card__date">{date}</p>
       </div>
-      <div className="ksl-transaction-card__amount text-right">
-        <p className="ksl-transaction-card__amount-value text-lg font-semibold">{amount}</p>
-        <p className={`ksl-transaction-card__change ${isPositiveChange ? 'text-green-500' : 'text-red-500'} flex text-md items-center`}>
+      <div className="ksl-transaction-card__amount">
+        <p className="ksl-transaction-card__amount-value">{amount}</p>
+        <p className={`ksl-transaction-card__amount-change ${isPositiveChange ? 'ksl-transaction-card__amount-change--positive' : 'ksl-transaction-card__amount-change--negative'}`}>
           {change} <KSLIcon name={isPositiveChange ? 'arrow-up' : 'arrow-down'} />
         </p>
       </div>
