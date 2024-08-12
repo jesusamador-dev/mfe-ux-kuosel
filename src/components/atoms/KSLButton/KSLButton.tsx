@@ -8,8 +8,10 @@ export interface KSLButtonProps {
 }
 
 const KSLButton: React.FC<KSLButtonProps> = ({ children, onClick, className = '', disabled = false }) => {
+  const buttonClass = `${className} ${disabled ? 'button--disabled' : ''}`;
+  
   return (
-    <button className={`button ${className}`} onClick={onClick} disabled={disabled}>
+    <button className={`button ${buttonClass}`} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

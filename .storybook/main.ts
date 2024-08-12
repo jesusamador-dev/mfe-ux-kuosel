@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    '@storybook/addon-docs',
   ],
   webpackFinal: async (config, {
     configType
@@ -18,6 +19,13 @@ const config: StorybookConfig = {
       use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../src/')
     });
+    config!.resolve! = {
+      ...config!.resolve!,
+      alias: {
+        ...config!.resolve!.alias,
+        '@': path.resolve(__dirname, '../src'),  // Añade esta línea
+      },
+    };
     return config;
   },
   framework: {

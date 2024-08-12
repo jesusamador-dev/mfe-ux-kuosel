@@ -1,4 +1,5 @@
 import React from 'react';
+
 const svgIcons = (name: string) => import(`!!raw-loader!../../../assets/icons/${name.toLowerCase()}.svg`);
 
 interface KSLIconProps {
@@ -8,7 +9,7 @@ interface KSLIconProps {
   className?: string;
 }
 
-const KSLIcon: React.FC<KSLIconProps> = ({ name, size = '1em', color = 'currentColor', className = '' }) => {
+const KSLIcon: React.FC<KSLIconProps> = ({ name, size = '1rem', color = 'currentColor', className = '' }) => {
   const [IconContent, setIconContent] = React.useState<string | null>(null);
 
   React.useEffect(() => {
@@ -21,15 +22,20 @@ const KSLIcon: React.FC<KSLIconProps> = ({ name, size = '1em', color = 'currentC
         svgElement.setAttribute('width', size);
         svgElement.setAttribute('height', size);
 
-        if (color) {
-          if (svgElement.hasAttribute('fill') && svgElement.getAttribute('fill') !== 'none') {
-            svgElement.setAttribute('fill', color);
+        // Iterar sobre cada path, rect, circle, etc., para aplicar el color
+        svgElement.querySelectorAll('[fill]').forEach(element => {
+          const currentFill = element.getAttribute('fill');
+          if (currentFill && currentFill !== 'none' && color) {
+            element.setAttribute('fill', color);
           }
+        });
 
-          if (svgElement.hasAttribute('stroke')) {
-            svgElement.setAttribute('stroke', color);
+        svgElement.querySelectorAll('[stroke]').forEach(element => {
+          const currentStroke = element.getAttribute('stroke');
+          if (currentStroke && color) {
+            element.setAttribute('stroke', color);
           }
-        }
+        });
 
         content = new XMLSerializer().serializeToString(svgElement);
       }

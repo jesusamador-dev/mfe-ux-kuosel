@@ -1,12 +1,12 @@
 import React from 'react';
-import KSLButton from './KSLButton';
-import KSLIcon from './KSLIcon';
+import KSLButton from '@/components/atoms/KSLButton/KSLButton';
+import KSLIcon from '@/components/atoms/KSLIcon/KSLIcon';
 
 interface KSLButtonWithIconProps {
-  text: string;
+  text?: string;
   iconName: string;
   iconPosition?: 'left' | 'right';
-  buttonType?: 'primary' | 'secondary' | 'transparent';
+  buttonType?: 'primary' | 'secondary' | 'transparent' | 'bordered';
   onClick?: () => void;
   disabled?: boolean;
 }

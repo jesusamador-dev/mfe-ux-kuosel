@@ -11,7 +11,7 @@ export default {
     className: { control: 'text' },
     disabled: { control: 'boolean' },
   },
-} as Meta;
+} as Meta<KSLButtonProps>;
 
 const Template: StoryFn<KSLButtonProps> = (args) => <KSLButton {...args} />;
 
@@ -27,9 +27,47 @@ Secondary.args = {
   className: 'button--secondary',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
+Secondary.parameters = {
+  backgrounds: {
+    default: 'principal',
+    values: [
+      { name: 'principal', value: '#F45D2D' },
+    ],
+  },
+};
+
+export const Transparent = Template.bind({});
+Transparent.args = {
+  children: 'Transparent Button',
+  className: 'button--transparent',
+};
+
+Transparent.parameters = {
+  backgrounds: {
+    default: 'principal',
+    values: [
+      { name: 'principal', value: '#F45D2D' },
+    ],
+  },
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+  children: 'Bordered Button',
+  className: 'button--bordered',
+};
+
+Bordered.parameters = {
+  backgrounds: {
+    default: 'principal',
+    values: [
+      { name: 'principal', value: '#FFFFFF' },
+    ],
+  },
+};
+
+export const DisabledPrimary = Template.bind({});
+DisabledPrimary.args = {
   children: 'Disabled Button',
-  className: 'button--primary',
   disabled: true,
 };

@@ -17,7 +17,7 @@ module.exports = {
         grayEEE: '#EEEEEE', // EEE
         grayCCC: '#CCCCCC', // CCC
         grayAAA: '#AAAAAA', // AAA
-        primaryA10: 'rgba(244, 93, 45, 0.1)', // 10% opacity
+        whiteA15: 'rgba(255, 255, 255, 0.15)', // 10% opacity
       },
     },
   },
