@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-import KSLBottomNavbar from './KSLBottomNavbar';
+import KSLBottomNavbar, {KSLBottomNavbarProps} from './KSLBottomNavbar';
 
 export default {
   title: 'Organismos/KSLBottomNavbar',
@@ -17,7 +17,7 @@ export default {
   ],
 } as Meta;
 
-const Template: StoryFn = (args) => <KSLBottomNavbar {...args} />;
+const Template: StoryFn<KSLBottomNavbarProps> = (args: KSLBottomNavbarProps) => <KSLBottomNavbar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -28,4 +28,11 @@ Default.args = {
     { name: 'Metas', icon: 'graph', path: '/graph' },
     { name: 'Perfil', icon: 'profile', path: '/profile' },
   ],
+};
+
+Default.parameters = {
+  backgrounds: {
+    default: "principal",
+    values: [{ name: "principal", value: "#F7F8F9" }],
+  },
 };

@@ -12,7 +12,20 @@ const Template: StoryFn<KSLTopBarProps> = (args) => <KSLTopBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: 'Acc Balance',
-  leftIcon: 'arrow-left',
-  rightIcon: 'notifications',
-  showNotificationDot: true,
+};
+
+// Default.parameters = {
+//   backgrounds: {
+//     default: 'principal',
+//     values: [
+//       {name: 'principal', value:'#F7F8F9'}
+//     ]
+//   }
+// }
+
+Default.parameters = {
+  backgrounds: {
+    default: "principal",
+    values: [{ name: "principal", value: "#F7F8F9" }],
+  },
 };

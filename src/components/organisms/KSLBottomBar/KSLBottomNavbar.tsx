@@ -9,7 +9,7 @@ interface KSLBottomNavbarLink {
   isSpecial?: boolean;
 }
 
-interface KSLBottomNavbarProps {
+export interface KSLBottomNavbarProps {
   links: KSLBottomNavbarLink[];
   showName?: boolean;
 }
