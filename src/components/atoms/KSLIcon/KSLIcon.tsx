@@ -22,20 +22,22 @@ const KSLIcon: React.FC<KSLIconProps> = ({ name, size = '1rem', color = 'current
         svgElement.setAttribute('width', size);
         svgElement.setAttribute('height', size);
 
-        // Iterar sobre cada path, rect, circle, etc., para aplicar el color
-        svgElement.querySelectorAll('[fill]').forEach(element => {
-          const currentFill = element.getAttribute('fill');
-          if (currentFill && currentFill !== 'none' && color) {
-            element.setAttribute('fill', color);
-          }
-        });
+        // Condición para no modificar el ícono 'notification-active'
+        if (name !== 'notification-active') {
+          svgElement.querySelectorAll('[fill]').forEach(element => {
+            const currentFill = element.getAttribute('fill');
+            if (currentFill && currentFill !== 'none' && color) {
+              element.setAttribute('fill', color);
+            }
+          });
 
-        svgElement.querySelectorAll('[stroke]').forEach(element => {
-          const currentStroke = element.getAttribute('stroke');
-          if (currentStroke && color) {
-            element.setAttribute('stroke', color);
-          }
-        });
+          svgElement.querySelectorAll('[stroke]').forEach(element => {
+            const currentStroke = element.getAttribute('stroke');
+            if (currentStroke && color) {
+              element.setAttribute('stroke', color);
+            }
+          });
+        }
 
         content = new XMLSerializer().serializeToString(svgElement);
       }

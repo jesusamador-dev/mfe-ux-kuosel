@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import KSLBottomNavbar from './KSLBottomNavbar';
 
 export default {
-  title: 'Organisms/KSLBottomNavbar',
+  title: 'Organismos/KSLBottomNavbar',
   component: KSLBottomNavbar,
   decorators: [
     (Story) => (
