@@ -1,0 +1,31 @@
+// src/styles/components/_categoriaCard.scss
+
+.ksl-categoria-card {
+  @apply rounded-lg p-4 text-white;
+
+  &__icon {
+    @apply absolute top-2 right-2 w-6 h-6;
+  }
+
+  &__title {
+    @apply font-medium;
+  }
+
+  &__amount {
+    @apply text-2xl font-bold mt-2;
+  }
+
+  &__percentage {
+    @apply text-sm mt-1 opacity-75;
+  }
+
+  .amount-decimal {
+    font-size: 0.875rem;
+  }
+
+  .percentage-box {
+    @apply bg-whiteA15 text-white;
+    border-radius: 0.375rem;  // Ajusta el redondeado
+    padding: 0.25rem 0.5rem;  // Ajusta el padding
+  }
+}

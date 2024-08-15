@@ -18,6 +18,12 @@ module.exports = {
         grayCCC: '#CCCCCC', // CCC
         grayAAA: '#AAAAAA', // AAA
         whiteA15: 'rgba(255, 255, 255, 0.15)', // 10% opacity
+        housing: '#F45D2D', // Housing color
+        food: '#816CF9', // Food color
+        saving: '#C9D8F0', // Saving color
+      },
+      borderRadius: {
+        '15px': '15px',
       },
     },
   },
