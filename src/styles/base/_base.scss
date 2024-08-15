@@ -1,4 +1,19 @@
 body {
-    @apply bg-grayPrincipal;
-    color: #2C2C2C;
+  @apply bg-grayPrincipal;
+  color: #2c2c2c;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+  overscroll-behavior-x: contain; /* Evita el rebote en el eje x */
+}
+
+.ksl-category-carousel {
+  scroll-snap-type: x mandatory; /* Para asegurar un scroll suave */
+  scroll-behavior: smooth; /* Para un desplazamiento más suave */
 }

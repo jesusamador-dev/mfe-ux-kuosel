@@ -1,10 +1,11 @@
 // src/styles/components/_categoriaCard.scss
 
-.ksl-categoria-card {
-  @apply rounded-lg p-4 text-white;
-
+.ksl-category-card {
+  @apply rounded-15px p-4;
+  position: relative;
+  width: 140px;
   &__icon {
-    @apply absolute top-2 right-2 w-6 h-6;
+    @apply absolute bottom-5 right-3 w-[20px] h-[20px] opacity-20;
   }
 
   &__title {
@@ -16,7 +17,11 @@
   }
 
   &__percentage {
-    @apply text-sm mt-1 opacity-75;
+    @apply text-sm mt-3 opacity-75;
+    
+    span {
+      @apply bg-white bg-opacity-20 rounded px-2 py-1;
+    }
   }
 
   .amount-decimal {
