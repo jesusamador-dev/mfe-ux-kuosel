@@ -2,7 +2,7 @@ import React from 'react';
 import KSLCategoryCard, { KSLCategoryCardProps } from '@/components/molecules/KSLCategoryCard/KSLCategoryCard';
 import KSLButton from '@/components/atoms/KSLButton/KSLButton';
 
-interface KSLCategoryCarouselProps {
+export interface KSLCategoryCarouselProps {
   categories: KSLCategoryCardProps[];
   onAddCategory: () => void;
 }
