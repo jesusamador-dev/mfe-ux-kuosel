@@ -9,14 +9,16 @@ interface KSLCategoryCarouselProps {
 
 const KSLCategoryCarousel: React.FC<KSLCategoryCarouselProps> = ({ categories, onAddCategory }) => {
   return (
-    <div className="ksl-category-carousel flex items-center space-x-4 py-4 overflow-x-auto no-scrollbar">
+    <div className="ksl-category-carousel flex items-stretch space-x-4 py-4 overflow-x-auto no-scrollbar touch-pan-x">
       {/* Botón fijo para agregar categorías */}
-      <KSLButton 
-        className="button--primary w-[60px]  flex-shrink-0"
-        onClick={onAddCategory}
-      >
-        +
-      </KSLButton>
+      <div className="flex-shrink-0">
+        <KSLButton 
+          className="button--primary w-[60px] button--full-height"
+          onClick={onAddCategory}
+        >
+          +
+        </KSLButton>
+      </div>
 
       {/* Carrusel de categorías */}
       <div className="flex space-x-4 pr-4">

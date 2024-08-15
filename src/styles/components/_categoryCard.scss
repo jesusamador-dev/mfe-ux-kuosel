@@ -34,3 +34,8 @@
     padding: 0.25rem 0.5rem;  // Ajusta el padding
   }
 }
+
+
+.ksl-category-carousel {
+  @apply flex items-stretch space-x-4 py-4 overflow-x-auto no-scrollbar touch-pan-x;
+}
