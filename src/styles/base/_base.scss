@@ -17,3 +17,69 @@ body {
   scroll-snap-type: x mandatory; /* Para asegurar un scroll suave */
   scroll-behavior: smooth; /* Para un desplazamiento más suave */
 }
+
+// KSLInput.scss
+.ksl-input {
+  @apply mb-4;
+
+  &__label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+  }
+
+  &__wrapper {
+    @apply flex items-center border rounded-lg px-3 py-2 border-gray-300;
+
+    &--error {
+      @apply border-primary bg-primaryA10;
+    }
+  }
+
+  &__icon {
+    @apply text-primary mr-2;
+  }
+
+  &__field {
+    @apply flex-1 bg-transparent focus:outline-none;
+  }
+
+  &__error {
+    @apply text-primary text-xs mt-1;
+  }
+}
+
+// KSLPasswordInput.scss
+.ksl-password-input {
+  @apply mb-4;
+
+  &__label {
+    @apply block text-sm font-medium text-gray-700 mb-2;
+  }
+
+  &__wrapper {
+    @apply flex items-center border rounded-lg px-3 py-2 border-gray-300;
+
+    &--error {
+      @apply border-primary bg-primaryA10;
+    }
+  }
+
+  &__icon {
+    @apply text-primary mr-2;
+  }
+
+  &__field {
+    @apply flex-1 bg-transparent focus:outline-none;
+  }
+
+  &__toggle {
+    @apply ml-2 bg-none border-none outline-none cursor-pointer;
+  }
+
+  &__toggle-icon {
+    @apply text-gray-400;
+  }
+
+  &__error {
+    @apply text-primary text-xs mt-1;
+  }
+}

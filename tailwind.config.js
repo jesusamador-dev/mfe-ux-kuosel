@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#F45D2D',  // Primary color 1
+        primaryA10: 'rgba(244, 93, 45, .1)',  // Primary color 1
         secondary: '#816CF9', // Secoundry color
         secondaryLight: '#AAAAAA', // Secondary color (más claro)
         font: '#000000', // Font color
