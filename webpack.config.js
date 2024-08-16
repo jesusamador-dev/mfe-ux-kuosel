@@ -17,6 +17,32 @@ const plugins = [
     filename: 'remoteEntry.js',
     remotes: {
     },
+    exposes: {
+      // Atoms
+      './atoms/KSLButton': './src/components/atoms/KSLButton/KSLButton.tsx',
+      './atoms/KSLIcon': './src/components/atoms/KSLIcon/KSLIcon.tsx',
+      './atoms/KSLInput': './src/components/atoms/KSLInput/KSLInput.tsx',
+      './atoms/KSLModal': './src/components/atoms/KSLModal/KSLModal.tsx',
+      './atoms/KSLPasswordInput': './src/components/atoms/KSLPasswordInput/KSLPasswordInput.tsx',
+      
+      // Molecules
+      './molecules/KSLButtonWithIcon': './src/components/molecules/KSLButtonWithIcon/KSLButtonWithIcon.tsx',
+      './molecules/KSLCagetoryCard': './src/components/molecules/KSLCagetoryCard/KSLCagetoryCard.tsx',
+      './molecules/KSLCircularCategoryCard': './src/components/molecules/KSLCircularCategoryCard/KSLCircularCategoryCard.tsx',
+      './molecules/KSLTransactionCard': './src/components/molecules/KSLTransactionCard/KSLTransactionCard.tsx',
+    
+      // Organisms
+      './organisms/KSLBottomBar': './src/components/organisms/KSLBottomBar/KSLBottomBar.tsx',
+      './organisms/KSLCategryCarrusel': './src/components/organisms/KSLCategryCarrusel/KSLCategryCarrusel.tsx',
+      './organisms/KSLModalCongratulations': './src/components/organisms/KSLModalCongratulations/KSLModalCongratulations.tsx',
+      './organisms/KSLTopBar': './src/components/organisms/KSLTopBar/KSLTopBar.tsx',
+    
+      // Hooks
+      './hooks/useModal': './src/hooks/useModal.ts',
+    
+      // Providers
+      './providers/StylesProvider': './src/providers/StylesProvider.tsx',
+    },    
     shared: {
       ...deps,
       react: {
