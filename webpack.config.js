@@ -13,8 +13,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const plugins = [
   new CleanWebpackPlugin(),
   new ModuleFederationPlugin({
-    name: 'host',
-    filename: 'remoteEntry.js',
+    name: 'mfe-ux-kuosel',
+    filename: 'remoteEntryUx.js',
+    library: { type: "global", name: "mfeUxKuosel" },
     remotes: {
     },
     exposes: {
@@ -27,13 +28,13 @@ const plugins = [
       
       // Molecules
       './molecules/KSLButtonWithIcon': './src/components/molecules/KSLButtonWithIcon/KSLButtonWithIcon.tsx',
-      './molecules/KSLCagetoryCard': './src/components/molecules/KSLCagetoryCard/KSLCagetoryCard.tsx',
+      './molecules/KSLCategoryCard': './src/components/molecules/KSLCategoryCard/KSLCategoryCard.tsx',
       './molecules/KSLCircularCategoryCard': './src/components/molecules/KSLCircularCategoryCard/KSLCircularCategoryCard.tsx',
       './molecules/KSLTransactionCard': './src/components/molecules/KSLTransactionCard/KSLTransactionCard.tsx',
     
       // Organisms
-      './organisms/KSLBottomBar': './src/components/organisms/KSLBottomBar/KSLBottomBar.tsx',
-      './organisms/KSLCategryCarrusel': './src/components/organisms/KSLCategryCarrusel/KSLCategryCarrusel.tsx',
+      './organisms/KSLBottomNavBar': './src/components/organisms/KSLBottomNavBar/KSLBottomNavBar.tsx',
+      './organisms/KSLCategoryCarousel': './src/components/organisms/KSLCategoryCarousel/KSLCategoryCarousel.tsx',
       './organisms/KSLModalCongratulations': './src/components/organisms/KSLModalCongratulations/KSLModalCongratulations.tsx',
       './organisms/KSLTopBar': './src/components/organisms/KSLTopBar/KSLTopBar.tsx',
     
@@ -75,7 +76,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'remoteEntry.js',
+    filename:  '[name].[contenthash].js',
     publicPath: '/kuosel/ux/v1/',
   },
   module: {
