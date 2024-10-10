@@ -1,11 +1,11 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
-import KSLBottomNavbar, {KSLBottomNavbarProps} from './KSLBottomNavbar';
+import KSLBottomNavBar, {KSLBottomNavBarProps} from './KSLBottomNavBar';
 
 export default {
-  title: 'Organismos/KSLBottomNavbar',
-  component: KSLBottomNavbar,
+  title: 'Organismos/KSLBottomNavBar',
+  component: KSLBottomNavBar,
   decorators: [
     (Story) => (
       <MemoryRouter initialEntries={['/']}>
@@ -17,7 +17,7 @@ export default {
   ],
 } as Meta;
 
-const Template: StoryFn<KSLBottomNavbarProps> = (args: KSLBottomNavbarProps) => <KSLBottomNavbar {...args} />;
+const Template: StoryFn<KSLBottomNavBarProps> = (args: KSLBottomNavBarProps) => <KSLBottomNavBar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

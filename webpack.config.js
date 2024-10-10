@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { InjectManifest } = require('workbox-webpack-plugin');
 const deps = require('./package.json').dependencies;
 const dotenv = require('dotenv');
 
@@ -13,9 +12,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const plugins = [
   new CleanWebpackPlugin(),
   new ModuleFederationPlugin({
-    name: 'mfe-ux-kuosel',
+    name: 'mfe_ux_kuosel',
     filename: 'remoteEntryUx.js',
-    library: { type: "global", name: "mfeUxKuosel" },
     remotes: {
     },
     exposes: {
@@ -43,6 +41,9 @@ const plugins = [
     
       // Providers
       './providers/StylesProvider': './src/providers/StylesProvider.tsx',
+
+      // Layouts
+      './layouts/HomeLayout': './src/components/layouts/HomeLayout.tsx',
     },    
     shared: {
       ...deps,
@@ -56,6 +57,11 @@ const plugins = [
         requiredVersion: deps['react-dom'],
         eager: true
       },
+      'react-router-dom': {
+        singleton: true,
+        requiredVersion: deps['react-router-dom'],
+        eager: true
+      },
     },
   }),
   new HtmlWebpackPlugin({
@@ -63,27 +69,16 @@ const plugins = [
   }),
 ];
 
-if (isProduction) {
-  plugins.push(
-    new InjectManifest({
-      swSrc: './src/service-worker.js', // Ruta al archivo fuente del service worker
-      swDest: 'service-worker.js', // Nombre del archivo destino del service worker
-    })
-  );
-}
-
 module.exports = {
-  entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename:  '[name].[contenthash].js',
-    publicPath: '/kuosel/ux/v1/',
+    path: path.resolve(__dirname, 'dist/kuosel/ux/v1/'),
+    publicPath: 'http://localhost:3000/kuosel/ux/v1/',
   },
   module: {
     rules: [
       {
         test: /\.svg$/,
-        use: 'raw-loader',  // Asegúrate de agregar esta regla
+        use: 'raw-loader',
       },
       {
         test: /\.(ts|tsx)$/,
@@ -121,12 +116,15 @@ module.exports = {
   },
   plugins: plugins,
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
     port: process.env.PORT,
     historyApiFallback: true,
+    allowedHosts: 'all',
+    hot: false,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
   },
   mode: isProduction ? 'production' : 'development',
 };

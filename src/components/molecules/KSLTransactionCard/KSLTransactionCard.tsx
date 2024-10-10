@@ -19,7 +19,7 @@ const KSLTransactionCard: React.FC<KSLTransactionCardProps> = ({
   isPositiveChange = true,
 }) => {
   return (
-    <div className="ksl-transaction-card">
+    <div className="ksl-transaction-card mb-4">
       <div className="ksl-transaction-card__icon">
         <KSLIcon name={categoryIcon} size="2rem" />
       </div>

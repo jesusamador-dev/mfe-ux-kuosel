@@ -8,9 +8,9 @@ export interface KSLCategoryCardProps {
 }
 
 const categoryStyles: Record<string, { backgroundColor: string; icon: string; textColor: string }> = {
-  Housing: { backgroundColor: 'bg-housing', icon: 'home', textColor: 'text-white',},
-  Food: { backgroundColor: 'bg-food', icon: 'home', textColor: 'text-white',},
-  Saving: { backgroundColor: 'bg-saving', icon: 'home', textColor: 'text-black',},
+  housing: { backgroundColor: 'bg-housing', icon: 'home', textColor: 'text-white',},
+  food: { backgroundColor: 'bg-food', icon: 'home', textColor: 'text-white',},
+  saving: { backgroundColor: 'bg-saving', icon: 'home', textColor: 'text-black',},
 };
 
 const KSLCategoryCard: React.FC<KSLCategoryCardProps> = ({
@@ -19,7 +19,7 @@ const KSLCategoryCard: React.FC<KSLCategoryCardProps> = ({
   percentage,
 }) => {
   const [integerAmount, decimalAmount] = amount.split('.');
-  const styles = categoryStyles[category];
+  const styles = categoryStyles[category.toLowerCase()];
 
   return (
     <div className={`ksl-category-card ${styles.backgroundColor}`}>

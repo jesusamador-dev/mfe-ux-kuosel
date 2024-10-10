@@ -1,5 +1,4 @@
 import React from 'react';
-
 const svgIcons = (name: string) => import(`!!raw-loader!../../../assets/icons/${name.toLowerCase()}.svg`);
 
 interface KSLIconProps {

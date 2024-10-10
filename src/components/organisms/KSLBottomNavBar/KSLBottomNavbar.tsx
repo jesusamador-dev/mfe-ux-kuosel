@@ -2,19 +2,19 @@ import React from 'react';
 import KSLIcon from '@/components/atoms/KSLIcon/KSLIcon';
 import { NavLink } from 'react-router-dom';
 
-interface KSLBottomNavbarLink {
+interface KSLBottomNavBarLink {
   name: string;
   icon: string;
   path: string;
   isSpecial?: boolean;
 }
 
-export interface KSLBottomNavbarProps {
-  links: KSLBottomNavbarLink[];
+export interface KSLBottomNavBarProps {
+  links: KSLBottomNavBarLink[];
   showName?: boolean;
 }
 
-const KSLBottomNavbar: React.FC<KSLBottomNavbarProps> = ({ links, showName = true }) => {
+const KSLBottomNavBar: React.FC<KSLBottomNavBarProps> = ({ links, showName = true }) => {
   return (
     <nav className="ksl-bottom-navbar">
       {links.map(link => (
@@ -47,4 +47,4 @@ const KSLBottomNavbar: React.FC<KSLBottomNavbarProps> = ({ links, showName = tru
   );
 };
 
-export default KSLBottomNavbar;
+export default KSLBottomNavBar;

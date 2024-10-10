@@ -1,6 +1,6 @@
 import React from 'react';
 import StylesProvider from './providers/StylesProvider';
-import KslButton from '@/components/atoms/KSLButton/KSLButton';
+import { createRoot } from "react-dom/client";
 
 const App: React.FC = () => {
   return (
@@ -10,4 +10,7 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+root.render(<App />);
