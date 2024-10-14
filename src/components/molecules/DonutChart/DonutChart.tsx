@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-interface PieChartData {
+export interface PieChartData {
   value: number;
   name: string;
   itemStyle: {
@@ -10,12 +10,11 @@ interface PieChartData {
   };
 }
 
-interface DonutChartProps {
+export interface DonutChartProps {
   data: PieChartData[];
-  zIndexOrder?: 'desc' | 'asc';
 }
 
-const DonutChart: React.FC<DonutChartProps> = ({ data, zIndexOrder = 'desc' }) => {
+const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, zIndexOrder = 'desc' }) =
     return () => {
       chart.dispose();
     };
-  }, [data, zIndexOrder]);
+  }, [data]);
 
   return <div ref={chartRef} style={{ height: 300 }} />;
 };
