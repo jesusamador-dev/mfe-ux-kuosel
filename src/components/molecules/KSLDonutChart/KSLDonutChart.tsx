@@ -10,11 +10,11 @@ export interface PieChartData {
   };
 }
 
-export interface DonutChartProps {
+export interface KSLDonutChartProps {
   data: PieChartData[];
 }
 
-const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
+const KSLDonutChart: React.FC<KSLDonutChartProps> = ({ data }) => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ const DonutChart: React.FC<DonutChartProps> = ({ data }) => {
   return <div ref={chartRef} style={{ height: 300 }} />;
 };
 
-export default DonutChart;
+export default KSLDonutChart;

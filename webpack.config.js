@@ -29,6 +29,7 @@ const plugins = [
       './molecules/KSLCategoryCard': './src/components/molecules/KSLCategoryCard/KSLCategoryCard.tsx',
       './molecules/KSLCircularCategoryCard': './src/components/molecules/KSLCircularCategoryCard/KSLCircularCategoryCard.tsx',
       './molecules/KSLTransactionCard': './src/components/molecules/KSLTransactionCard/KSLTransactionCard.tsx',
+      './molecules/KSLDonutChart': './src/components/molecules/KSLDonutChart/KSLDonutChart.tsx',
     
       // Organisms
       './organisms/KSLBottomNavBar': './src/components/organisms/KSLBottomNavBar/KSLBottomNavBar.tsx',

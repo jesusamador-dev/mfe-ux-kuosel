@@ -1,20 +1,20 @@
 import React from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import DonutChart, { DonutChartProps } from './DonutChart';
+import KSDonutChart, { KSLDonutChartProps } from './KSLDonutChart';
 
 // Configuración general del story
 export default {
   title: 'Moleculas/DonutChart', // Título de la categoría en Storybook
-  component: DonutChart, // Componente a renderizar
+  component: KSDonutChart, // Componente a renderizar
   argTypes: {
     data: { control: { type: 'object' } }, // Control para manejar los datos como un objeto
   },
-} as Meta<typeof DonutChart>;
+} as Meta<typeof KSDonutChart>;
 
 // Plantilla para las variaciones del story
-const Template: StoryFn<typeof DonutChart> = (args) => (
+const Template: StoryFn<typeof KSDonutChart> = (args) => (
   <div style={{ width: '300px', height: '300px' }}>
-    <DonutChart {...args} />
+    <KSDonutChart {...args} />
   </div>
 );
 
